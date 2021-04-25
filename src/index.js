@@ -26,13 +26,25 @@ class Card {
     renderCard(){     
         let p = document.createElement('a') 
         let button = document.createElement('button')
-        let cardDetailsDiv = document.createElement('div')
+        let button2 = document.createElement('button')
+        let cardDetailsDiv = document.createElement('div') 
         let cardDiv = document.createElement('div')
-        button.innerHTML = "view details" 
-        console.log(this)
-        p.innerHTML = this.number      
+        button.innerHTML = "view details"
+        button2.innerHTML = "show less"
+
+        cardDetailsDiv.style.display = 'none'
+        button.addEventListener("click", () => {
+            cardDetailsDiv.style.display ="block"
+        })
+        button2.addEventListener("click", () => {
+            cardDetailsDiv.style.display ="none"
+        })
+
+        cardDetailsDiv.innerHTML = "card details" 
+        p.innerHTML = this.number  
+        cardDetailsDiv.append(button2)    
         cardDiv.append(p, button)
-        cardsDiv.append(cardDiv)
+        cardsDiv.append(cardDiv, cardDetailsDiv)
     }
 
     static fetchCards(){
